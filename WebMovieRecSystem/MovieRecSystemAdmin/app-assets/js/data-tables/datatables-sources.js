@@ -148,43 +148,57 @@ var editor;
                 }
             },
             info: true,
-            lengthChange: false,
-            select: true,
-            buttons: [ 
-                {
-                    text: '新增',
-                    action: function ( e, dt, node, config ) {
+            select: true
+        } );
 
-                        var name = $(this).attr("className");
-                        node[0].className = "btn btn-danger";
-                        alert(name);
-                    }  
+
+
+        $('#movie-table').DataTable( {
+            data: dataSet,
+            columns: [
+                { title: "电影名称" },
+                { title: "电影分类" },
+                { title: "电影标签" },
+                { title: "简介" }
+            ],
+            language: {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
                 },
-                {
-                    text: '修改',
-                    action: function ( e, dt, node, config ) {
-                            alert("mod");
-                     }  
-                },
-                {
-                    text: '删除',
-                    action: function ( e, dt, node, config ) {
-                            alert("del");
-                    }  
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
                 }
-            ]
+            },
+            info: true,
+            select: true
         } );
-        table.buttons().container().appendTo( $('.col-md-6:eq(0)', table.table().container() ) );
+        // table.buttons().container().appendTo( $('.col-md-6:eq(0)', table.table().container() ) );
 
-         $('#user-table').on('click', 'tr',function() {
-            var table = $('#user-table').DataTable();
-            var data = table.row(this).data(); //获取单击那一行的数据
-            
-            var selectNum = table.rows(".selected").data().length;
-            if(selectNum>0){
-                console.log(data);
-            }
-        } );
+        //  $('#user-table').on('click', 'tr',function() {
+        //     var table = $('#user-table').DataTable();
+        //     var data = table.row(this).data(); //获取单击那一行的数据
+        //     
+        //     var selectNum = table.rows(".selected").data().length;
+        //     if(selectNum>0){
+        //         console.log(data);
+        //     }
+        // } );
     
     } );
 
